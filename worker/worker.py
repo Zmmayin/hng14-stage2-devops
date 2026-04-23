@@ -9,6 +9,7 @@ r = redis.Redis(
     port=int(os.getenv("REDIS_PORT", 6379))
 )
 
+
 def process_job(job_id):
     try:
         print(f"Processing job {job_id}")
@@ -20,6 +21,7 @@ def process_job(job_id):
         print(f"Error processing job {job_id}: {e}")
         r.hset(f"job:{job_id}", "status", "failed")
 
+
 while True:
     job = r.brpop("job", timeout=5)
     if job:
@@ -28,9 +30,11 @@ while True:
     with open("/tmp/worker_healthy", "w") as f:
         f.write("ok")
 
+
 def handle_shutdown(signum, frame):
 	print("Shutting down worker gracefully...")
 	sys.exit(0)
+
 
 signal.signal(signal.SIGTERM, handle_shutdown)
 signal.signal(signal.SIGINT, handle_shutdown)
