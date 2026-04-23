@@ -1,8 +1,8 @@
 FROM python:3.11-slim AS builder
 WORKDIR /app
 COPY requirements.txt .
-RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --upgrade pip==26.0.1 && \
+    pip install --no-cache-dir -r --requirement requirements.txt
 
 FROM python:3.11-slim
 WORKDIR /app
