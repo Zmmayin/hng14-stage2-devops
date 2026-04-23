@@ -24,6 +24,8 @@ services:
       context: ./api
       dockerfile: Dockerfile
     container_name: api
+    ports:
+      - "8000:8000"
     networks:
       - app-network
     environment:
