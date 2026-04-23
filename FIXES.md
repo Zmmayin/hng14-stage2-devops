@@ -30,17 +30,3 @@ This document details every bug found in the original source code, including the
 | 13 | `worker/worker.py` | 12,23,31,32,33,35 | Flake8 errors: E302, E305, W191, E101, E117 | Added blank lines, replaced tabs with spaces |
 
 ---
-
-## Frontend — `frontend/package.json`
-
-| # | File | Line | Problem | Fix |
-|---|---|---|---|---|
-| 14 | `frontend/package.json` | 4, 7 | Entry point referenced `app.js` which doesn't exist | Changed `main` and `start` script to `server.js` |
-
----
-
-## Frontend — `frontend/server.js`
-
-| # | File | Line | Problem | Fix |
-|---|---|---|---|---|
-| 15 | `frontend/server.js` | 5 | API URL hardcoded to `http://localhost:8000` | Replaced with `process.env.API_URL || "http://api:8000"` |
