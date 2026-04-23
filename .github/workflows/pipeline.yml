@@ -233,6 +233,9 @@ jobs:
             python3 -c "import sys, json; print(json.load(sys.stdin)['job_id'])")
           echo "job_id=$JOB_ID" >> $GITHUB_OUTPUT
           echo "Submitted job: $JOB_ID"
+          
+      - name: Debug worker
+        run: docker compose logs
 
       - name: Poll until job completes
         run: |
@@ -249,9 +252,6 @@ jobs:
           done
           echo "Job did not complete in time"
           exit 1
-
-      - name: Debug worker
-        run: docker compose logs
 
 
       - name: Tear down stack
