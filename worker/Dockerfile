@@ -9,7 +9,7 @@ WORKDIR /app
 RUN addgroup --system appuser && \
     adduser --system --ingroup appuser appuser
 COPY --from=builder /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-packages
-COPY --from=builder /usr/local/bin/uvicorn /usr/local/bin/uvicorn
+COPY --from=builder /usr/local/bin /usr/local/bin
 COPY . .
 USER appuser
 EXPOSE 8000
