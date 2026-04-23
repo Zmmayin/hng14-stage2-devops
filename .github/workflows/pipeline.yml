@@ -250,6 +250,10 @@ jobs:
           echo "Job did not complete in time"
           exit 1
 
+      - name: Debug worker
+        run: docker compose logs
+
+
       - name: Tear down stack
         if: always()
         run: docker compose down -v
